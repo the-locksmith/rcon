@@ -6,6 +6,7 @@ import (
 	"flag"
 	"io/ioutil"
 	"os"
+	"os/user"
 	"strings"
 
 	"github.com/madcitygg/rcon"
@@ -40,7 +41,12 @@ func main() {
 			*file = env
 		} else {
 			// No config argument & no RCON_CONF are set, use default one
-			*file = "~/.rconrc"
+			usr, err := user.Current()
+			if err != nil {
+				fmt.Fprintf(os.Stderr, "Could not get current user: %v\n", err)
+				os.Exit(1)
+			}
+			*file = fmt.Sprintf("%s/.rconrc", usr.HomeDir)
 		}
 	}
 
