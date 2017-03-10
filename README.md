@@ -23,12 +23,16 @@ Configuration file location
 ---------------------------
 Use default configuration file `~/.rconrc`:
 
-`rcon status`
+```
+rcon status
+```
 
 Another option is to specify configuratiom file via command line or use `RCON_CONF` environment variable, which might be handy in case of maintaining multiple game servers:
 
-`rcon -config /test/.rconrc status`
-`RCON_CONF=/test/.rconrc rcon status`
+```
+rcon -config /test/.rconrc status
+RCON_CONF=/test/.rconrc rcon status
+```
 
 Autoban
 -------
@@ -43,10 +47,14 @@ kickwhat.com * myohmy.org
 
 Use following to ban/kick users from your server:
 
-`rcon -autoban`
+```
+rcon -autoban
+```
 
 It is possible to test autoban feature withoun banning anyone, so that no innocent users are banned after configuration adjustment:
 
-`rcon -autoban-test`
+```
+rcon -autoban-test
+```
 
 This will only print matched users, but will not perform actual ban/kick.
