@@ -2,4 +2,50 @@
 	"server_address"  : "server.example.com",
 	"server_port"     : 27015,
 	"server_password" : "password"
+
+	"bot_name"        : "ban-bot",
+
+	"banlist":
+	[
+		{
+			"regex"   : ".*?csgo(-happy|big|casino|dep|fade|labz|mix|rage|titan|tune|wd)",
+			"period"  : 4320,
+			"message" : "advertisement = ban 72h"
+		},
+		{
+			"regex"   : ".*?csgo.*?co|gg|net|org|ru|tv",
+			"period"  : 4320,
+			"message" : "advertisement = ban 72h"
+		},
+		{
+			"regex"   : ".*?elite(case|drop)",
+			"period"  : 4320,
+			"message" : "advertisement = ban 72h"
+		},
+		{
+			"regex"   : ".*?skin(up|games|win)",
+			"period"  : 4320,
+			"message" : "advertisement = ban 72h"
+		},
+		{
+			"regex"   : ".*?cases2x|kickback|magicdrop|pvpro",
+			"period"  : 4320,
+			"message" : "advertisement = ban 72h"
+		},
+		{
+			"regex"   : ".*?\\.(co|gg|net|org|ru|tv)",
+			"period"  : 1440,
+			"message" : "link = ban 24h"
+		},
+		{
+			"regex"   : ".*?fixcsgo",
+			"period"  : 0,
+			"message" : "#FixCSGO whitelisted = no ban"
+		},
+		{
+			"regex"   : ".*?csgo",
+			"period"  : 1440,
+			"message" : "*csgo* = ban 24h"
+		}
+	]
 }

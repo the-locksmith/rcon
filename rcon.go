@@ -12,33 +12,31 @@ import (
 	"github.com/madcitygg/rcon"
 )
 
-type Config struct {
-	ServerAddress  string `json:"server_address"`
-	ServerPort     int    `json:"server_port"`
-	ServerPassword string `json:"server_password"`
-}
-
 func init() {
 	flag.Usage = usage
 }
 
 func usage() {
-	fmt.Printf("Usage: %s [-config file] command\n", os.Args[0])
+	fmt.Printf("Usage: %s [-config file] [-autoban | -autoban-test | command]\n", os.Args[0])
 	flag.PrintDefaults()
 }
 
 func main() {
+	// Declare variables
+	arg_config := new(string)
+
 	// Parse command line arguments
-	file := new(string)
-	file = flag.String("config", "", "Config file")
+	arg_autoban      := flag.Bool("autoban", false, "Auto-ban users by their names")
+	arg_autoban_test := flag.Bool("autoban-test", false, "Test auto-ban, do not ban anyone")
+	arg_config        = flag.String("config", "", "Config file")
 	flag.Parse()
 
 	// Set config filename if it was not provided
-	if *file == "" {
+	if *arg_config == "" {
 		// Try to extract config filename from RCON_CONF environment variable
 		env, set := os.LookupEnv("RCON_CONF")
 		if set {
-			*file = env
+			*arg_config = env
 		} else {
 			// No config argument & no RCON_CONF are set, use default one
 			usr, err := user.Current()
@@ -46,13 +44,23 @@ func main() {
 				fmt.Fprintf(os.Stderr, "Could not get current user: %v\n", err)
 				os.Exit(1)
 			}
-			*file = fmt.Sprintf("%s/.rconrc", usr.HomeDir)
+			*arg_config = fmt.Sprintf("%s/.rconrc", usr.HomeDir)
 		}
 	}
 
 	// Check if command line arguments are valid
-	if len(flag.Args()) == 0 {
-		fmt.Fprintln(os.Stderr, "Command missing")
+	args := 0
+	if *arg_autoban {
+		args += 1
+	}
+	if *arg_autoban_test {
+		args += 1
+	}
+	if len(flag.Args()) > 0 {
+		args += 1
+	}
+	if args != 1 {
+		fmt.Fprintln(os.Stderr, "Bad arguments")
 		usage()
 		os.Exit(1)
 	}
@@ -61,14 +69,13 @@ func main() {
 	cmd := strings.Join(flag.Args(), " ")
 
 	// Read configuration file
-	data, err := ioutil.ReadFile(*file)
+	data, err := ioutil.ReadFile(*arg_config)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Could not read configuration file: %v\n", err)
 		os.Exit(1)
 	}
 
 	// Parse json data into Config structure
-	var config Config
 	err = json.Unmarshal(data, &config)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error parsing configuration file: %v\n", err)
@@ -90,12 +97,18 @@ func main() {
 		os.Exit(1)
 	}
 
-	// Execute command
-	response, err := server.Execute(cmd)
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Server response error: %v\n", err)
-		os.Exit(1)
+	// Perform action
+	if *arg_autoban {
+		autoban(server, false)
+	} else
+	if *arg_autoban_test {
+		autoban(server, true)
+	} else {
+		response, err := server.Execute(cmd)
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Server response error: %v\n", err)
+			os.Exit(1)
+		}
+		fmt.Print(response.Body)
 	}
-
-	fmt.Print(response.Body)
 }
