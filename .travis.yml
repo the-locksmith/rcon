@@ -3,17 +3,17 @@ language: go
 sudo: false
 
 go:
-	- 1.6
-	- 1.7
-	- 1.8
-	- tip
+  - 1.6
+  - 1.7
+  - 1.8
+  - tip
 
 install:
-	- go get -t -v ./...
+  - go get -t -v ./...
 
 script:
-	- go vet -x -v ./...
-	- go test -race -coverprofile=coverage.txt -covermode=atomic -v ./...
+  - go vet -x -v ./...
+  - go test -race -coverprofile=coverage.txt -covermode=atomic -v ./...
 
 after_success:
-	- bash <(curl -s https://codecov.io/bash)
+  - bash <(curl -s https://codecov.io/bash)
