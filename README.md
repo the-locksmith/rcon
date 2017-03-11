@@ -4,7 +4,7 @@ rcon
 [![Build Status](https://travis-ci.org/andrejsc/rcon.svg)](https://travis-ci.org/andrejsc/rcon)
 [![License](https://img.shields.io/github/license/andrejsc/rcon.svg)](https://github.com/andrejsc/rcon/blob/master/LICENSE.md)
 
-RCON command line utility on steroids for Source game servers
+Source game server RCON command line utility on steroids
 
 Usage
 -----
@@ -27,7 +27,7 @@ Use default configuration file `~/.rconrc`:
 rcon status
 ```
 
-Another option is to specify configuratiom file via command line or use `RCON_CONF` environment variable, which might be handy in case of maintaining multiple game servers:
+Another option is to specify configuration file via command line or use `RCON_CONF` environment variable, which might be handy in case of maintaining multiple game servers:
 
 ```
 rcon -config /test/.rconrc status
@@ -45,7 +45,7 @@ ololo twitch.com/ololo
 kickwhat.com * myohmy.org
 ```
 
-Use following to ban/kick users from your server:
+Use following to ban/kick those users from your server:
 
 ```
 rcon -autoban
