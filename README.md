@@ -1,8 +1,8 @@
 rcon
 ====
 
-[![Build Status](https://travis-ci.org/andrejsc/rcon.svg)](https://travis-ci.org/andrejsc/rcon)
-[![License](https://img.shields.io/github/license/andrejsc/rcon.svg)](https://github.com/andrejsc/rcon/blob/master/LICENSE.md)
+[![Build Status](https://travis-ci.org/dieselburner/rcon.svg)](https://travis-ci.org/dieselburner/rcon)
+[![License](https://img.shields.io/github/license/dieselburner/rcon.svg)](https://github.com/dieselburner/rcon/blob/master/LICENSE.md)
 
 Source game server RCON command line utility on steroids
 
