@@ -101,22 +101,22 @@ func autoban(server *rcon.RCON, test bool) {
 				if !test {
 					// Execute rcon command: banid <period> <userid>
 					cmd := fmt.Sprintf("banid %d %s", ban.Period, user.id)
-					fmt.Printf("  > %s", cmd)
+					fmt.Printf("  > %s\n", cmd)
 					response, err := server.Execute(cmd)
 					if err != nil {
 						fmt.Fprintf(os.Stderr, "Server `banid` command error: %v\n", err)
 						os.Exit(1)
 					}
-					fmt.Printf("  < %s", response.Body)
+					fmt.Printf("  < %s\n", response.Body)
 					// Execute rcon command: kickid <userid> <message>
 					cmd = fmt.Sprintf("kickid %s %s: %s", user.id, config.BotName, ban.Message)
-					fmt.Printf("  > %s", cmd)
+					fmt.Printf("  > %s\n", cmd)
 					response, err = server.Execute(cmd)
 					if err != nil {
 						fmt.Fprintf(os.Stderr, "Server `kickid` command error: %v\n", err)
 						os.Exit(1)
 					}
-					fmt.Printf("  < %s", response.Body)
+					fmt.Printf("  < %s\n", response.Body)
 				}
 			}
 		}
