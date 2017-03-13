@@ -57,4 +57,4 @@ It is possible to test autoban feature without banning anyone, so that no innoce
 rcon -autoban-test
 ```
 
-This will only print matched users, but will not perform actual ban/kick.
+This will only print matched users along with RCON commands that needs to be performed to ban/kick them, but actual ban/kick will not happen.
