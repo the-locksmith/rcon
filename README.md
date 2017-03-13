@@ -45,13 +45,13 @@ ololo twitch.com/ololo
 kickwhat.com * myohmy.org
 ```
 
-Use following to ban/kick those users from your server:
+Use following to ban/kick these users from your server:
 
 ```
 rcon -autoban
 ```
 
-It is possible to test autoban feature withoun banning anyone, so that no innocent users are banned after configuration adjustment:
+It is possible to test autoban feature without banning anyone, so that no innocent users are banned after configuration adjustment:
 
 ```
 rcon -autoban-test
