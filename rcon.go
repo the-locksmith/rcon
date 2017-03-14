@@ -12,12 +12,14 @@ import (
 	"github.com/madcitygg/rcon"
 )
 
+const version = "1.0.0"
+
 func init() {
 	flag.Usage = usage
 }
 
 func usage() {
-	fmt.Printf("Usage: %s [-config file] [-autoban | -autoban-test | command]\n", os.Args[0])
+	fmt.Printf("Usage: %s [-config file] [-autoban | -autoban-test | -version | command]\n", os.Args[0])
 	flag.PrintDefaults()
 }
 
@@ -26,8 +28,9 @@ func main() {
 	arg_config := new(string)
 
 	// Parse command line arguments
-	arg_autoban      := flag.Bool("autoban", false, "Auto-ban users by their names")
+	arg_autoban      := flag.Bool("autoban",      false, "Auto-ban users by their names")
 	arg_autoban_test := flag.Bool("autoban-test", false, "Test auto-ban, do not ban anyone")
+	arg_version      := flag.Bool("version",      false, "Show version information")
 	arg_config        = flag.String("config", "", "Config file")
 	flag.Parse()
 
@@ -56,6 +59,9 @@ func main() {
 	if *arg_autoban_test {
 		args += 1
 	}
+	if *arg_version {
+		args += 1
+	}
 	if len(flag.Args()) > 0 {
 		args += 1
 	}
@@ -63,6 +69,12 @@ func main() {
 		fmt.Fprintln(os.Stderr, "Bad arguments")
 		usage()
 		os.Exit(1)
+	}
+
+	// Show version info before parsing the configuration file
+	if *arg_version {
+		fmt.Printf("%s %s\n", os.Args[0], version)
+		os.Exit(0)
 	}
 
 	// Build command from command line argument array
