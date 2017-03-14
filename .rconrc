@@ -13,7 +13,7 @@
 			"message" : "advertisement = ban 72h"
 		},
 		{
-			"regex"   : ".*?csgo.*?co|gg|net|org|ru|tv",
+			"regex"   : ".*?csgo.*?(co|gg|net|org|ru|tv)",
 			"period"  : 4320,
 			"message" : "advertisement = ban 72h"
 		},
