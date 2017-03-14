@@ -10,13 +10,15 @@ Usage
 -----
 
 ```
-Usage: ./rcon [-config file] [-autoban | -autoban-test | command]
+Usage: vodka [-config file] [-autoban | -autoban-test | -version | command]
   -autoban
         Auto-ban users by their names
   -autoban-test
         Test auto-ban, do not ban anyone
   -config string
         Config file
+  -version
+        Show version information
 ```
 
 Configuration file location
