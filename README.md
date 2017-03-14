@@ -10,7 +10,7 @@ Usage
 -----
 
 ```
-Usage: vodka [-config file] [-autoban | -autoban-test | -version | command]
+Usage: rcon [-config file] [-autoban | -autoban-test | -version | command]
   -autoban
         Auto-ban users by their names
   -autoban-test
