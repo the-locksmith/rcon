@@ -92,32 +92,29 @@ func autoban(server *rcon.RCON, test bool) {
 	for _, line := range array {
 		// Parse the line and check if username matches any of the banlist records
 		user, ban := check_match(config.Banlist, line)
-		// Match found
-		if user != nil && ban != nil {
-			if ban.Period > 0 {
-				// Ban > 0, ban!
-				fmt.Printf("Ban: id=%s name=\"%s\" period=%d, message=\"%s: %s\"\n",
-				           user.id, user.name, ban.Period, config.BotName, ban.Message)
-				if !test {
-					// Execute rcon command: banid <period> <userid>
-					cmd := fmt.Sprintf("banid %d %s", ban.Period, user.id)
-					fmt.Printf("  > %s\n", cmd)
-					response, err := server.Execute(cmd)
-					if err != nil {
-						fmt.Fprintf(os.Stderr, "Server `banid` command error: %v\n", err)
-						os.Exit(1)
-					}
-					fmt.Printf("  < %s\n", response.Body)
-					// Execute rcon command: kickid <userid> <message>
-					cmd = fmt.Sprintf("kickid %s %s: %s", user.id, config.BotName, ban.Message)
-					fmt.Printf("  > %s\n", cmd)
-					response, err = server.Execute(cmd)
-					if err != nil {
-						fmt.Fprintf(os.Stderr, "Server `kickid` command error: %v\n", err)
-						os.Exit(1)
-					}
-					fmt.Printf("  < %s\n", response.Body)
+		// Match found, ban if period > 0 (not whitelisted)
+		if user != nil && ban != nil && ban.Period > 0 {
+			fmt.Printf("Ban: id=%s name=\"%s\" period=%d, message=\"%s: %s\"\n",
+			           user.id, user.name, ban.Period, config.BotName, ban.Message)
+			if !test {
+				// Execute rcon command: banid <period> <userid>
+				cmd := fmt.Sprintf("banid %d %s", ban.Period, user.id)
+				fmt.Printf("  > %s\n", cmd)
+				response, err := server.Execute(cmd)
+				if err != nil {
+					fmt.Fprintf(os.Stderr, "Server `banid` command error: %v\n", err)
+					os.Exit(1)
 				}
+				fmt.Printf("  < %s\n", response.Body)
+				// Execute rcon command: kickid <userid> <message>
+				cmd = fmt.Sprintf("kickid %s %s: %s", user.id, config.BotName, ban.Message)
+				fmt.Printf("  > %s\n", cmd)
+				response, err = server.Execute(cmd)
+				if err != nil {
+					fmt.Fprintf(os.Stderr, "Server `kickid` command error: %v\n", err)
+					os.Exit(1)
+				}
+				fmt.Printf("  < %s\n", response.Body)
 			}
 		}
 	}
