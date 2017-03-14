@@ -1,7 +1,7 @@
 {
 	"server_address"  : "server.example.com",
 	"server_port"     : 27015,
-	"server_password" : "password"
+	"server_password" : "password",
 
 	"bot_name"        : "ban-bot",
 
