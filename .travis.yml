@@ -9,12 +9,22 @@ go:
 env:
   - "PATH=/home/travis/gopath/bin:$PATH"
 
-before_install:
-  - go get github.com/mitchellh/gox
-  - go get github.com/tcnksm/ghr
+install:
   - go get -t -v ./...
+  - go get github.com/mitchellh/gox
+
+script:
   - gox
 
 after_success:
   - gox -output "dist/{{.OS}}_{{.Arch}}_{{.Dir}}"
-  - ghr --username dieselburner --token $GITHUB_TOKEN --replace --prerelease --debug pre-release dist/
+
+deploy:
+    provider: releases
+    api_key:
+        secure: $GITHUB_TOKEN
+    file_glob: true
+    file: dist/*
+    skip_cleanup: true
+    on:
+        tags: true
