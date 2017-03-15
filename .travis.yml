@@ -11,7 +11,7 @@ env:
 
 before_install:
   - go get github.com/mitchellh/gox
-  - gox -build-toolchain
+  - gox
   - go get github.com/tcnksm/ghr
   - go get github.com/axw/gocov/gocov
   - go get github.com/mattn/goveralls
