@@ -10,6 +10,7 @@ env:
   - "PATH=/home/travis/gopath/bin:$PATH"
 
 before_install:
+  - go get -t -v ./...
   - go get github.com/mitchellh/gox
   - gox
   - go get github.com/tcnksm/ghr
@@ -17,13 +18,10 @@ before_install:
   - go get github.com/mattn/goveralls
   - go get code.google.com/p/go.tools/cmd/cover
 
-install:
-  - go get -t -v ./...
-
 script:
   - go test -v -covermode=count -coverprofile=coverage.out ./...
   - goveralls -coverprofile=coverage.out -service travis-ci -repotoken $COVERALLS_TOKEN
 
 after_success:
   - gox -output "dist/{{.OS}}_{{.Arch}}_{{.Dir}}"
-  - ghr --username tcnksm-sample --token $GITHUB_TOKEN --replace --prerelease --debug pre-release dist/
+  - ghr --username dieselburner --token $GITHUB_TOKEN --replace --prerelease --debug pre-release dist/
