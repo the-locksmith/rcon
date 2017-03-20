@@ -1,5 +1,4 @@
 language: go
-sudo: required
 
 go:
   - release
@@ -28,12 +27,6 @@ env:
       - GIMME_OS=openbsd GIMME_ARCH=arm64
       - GIMME_OS=windows GIMME_ARCH=386
       - GIMME_OS=windows GIMME_ARCH=amd64
-
-addons:
-    apt:
-        packages:
-          - gcc-aarch64-linux-gnu
-          - libc6-dev-arm64-cross
 
 before_install:
   - curl -o gimme -sL https://raw.githubusercontent.com/travis-ci/gimme/master/gimme
