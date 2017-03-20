@@ -17,14 +17,15 @@ script:
   - gox
 
 after_success:
-  - gox -output "dist/{{.OS}}_{{.Arch}}_{{.Dir}}"
+  - gox -output "dist/{{.OS}}/{{.Arch}}/{{.Dir}}"
+
+before_deploy:
+  - find dist/ -type f | awk -F"/" '{print "cp " $0 " . && tar -czvf dist/rcon-" $2 "-" $3 ".tar.gz " $4}'
 
 deploy:
     provider: releases
     api_key:
         secure: $GITHUB_TOKEN
     file_glob: true
-    file: dist/*
+    file: dist/*.tar.gz
     skip_cleanup: true
-    on:
-        tags: true
