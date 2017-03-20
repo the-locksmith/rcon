@@ -28,7 +28,7 @@
 			"message" : "advertisement = ban 72h"
 		},
 		{
-			"regex"   : ".*?cases2x|kickback|magicdrop|pvpro",
+			"regex"   : ".*?(cases2x|kickback|magicdrop|pvpro)",
 			"period"  : 4320,
 			"message" : "advertisement = ban 72h"
 		},
