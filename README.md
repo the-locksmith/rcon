@@ -79,7 +79,7 @@ Some technical information for autoban configuration:
 - Regex rules are processed in the same order as they appear in the file.
 - `period` of 0 used for whitelisting. Because of this no permanent bans are possible via autoban.
 
-Default configuration file is [present in the source code](https://github.com/dieselburner/rcon/blob/master/.rconrc), and contains some predefined set of autoban regex rules.
+Default configuration file is [present in the source code](https://github.com/dieselburner/rcon/blob/master/.rconrc), and contains a predefined set of autoban regex rules.
 
 ### Configuration file location
 
