@@ -1,4 +1,5 @@
 language: go
+sudo: required
 
 go:
   - release
@@ -30,8 +31,10 @@ env:
 
 addons:
     apt:
-      - gcc-aarch64-linux-gnu
-      - libc6-dev-arm64-cross
+        packages:
+          - gcc-aarch64-linux-gnu
+          - libc6-dev-arm64-cross
+
 before_install:
   - curl -o gimme -sL https://raw.githubusercontent.com/travis-ci/gimme/master/gimme
   - chmod u+x gimme
