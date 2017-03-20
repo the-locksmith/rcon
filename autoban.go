@@ -6,6 +6,7 @@ import (
 	"os"
 	"regexp"
 	"strings"
+	"time"
 
 	"github.com/madcitygg/rcon"
 )
@@ -94,8 +95,9 @@ func autoban(server *rcon.RCON, test bool) {
 		user, ban := check_match(config.Banlist, line)
 		// Match found, ban if period > 0 (not whitelisted)
 		if user != nil && ban != nil && ban.Period > 0 {
-			fmt.Printf("Ban: id=%s name=\"%s\" period=%d, message=\"%s: %s\"\n",
-			           user.id, user.name, ban.Period, config.BotName, ban.Message)
+			t := time.Now()
+			fmt.Printf("[%s] Ban: id=%s name=\"%s\" period=%d, message=\"%s: %s\"\n",
+			           t.String(), user.id, user.name, ban.Period, config.BotName, ban.Message)
 			if !test {
 				// Execute rcon command: banid <period> <userid>
 				cmd := fmt.Sprintf("banid %d %s", ban.Period, user.id)
