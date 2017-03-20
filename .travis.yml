@@ -14,9 +14,6 @@ install:
   - go get github.com/mitchellh/gox
 
 script:
-  - gox
-
-after_success:
   - gox -output "dist/{{.OS}}/{{.Arch}}/{{.Dir}}"
 
 before_deploy:
