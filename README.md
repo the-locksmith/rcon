@@ -83,7 +83,7 @@ Default configuration file is [present in the source code](https://github.com/di
 
 ### Configuration file location
 
-By default, configuration file is located at `~/.rconrc`.
+By default, `rcon` will use configuration file located at `~/.rconrc`.
 
 Another option is to specify configuration file via command line or use `RCON_CONF` environment variable, which might be handy in case of maintaining multiple game servers:
 
