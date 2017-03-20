@@ -8,9 +8,9 @@ Source game server RCON command line utility on steroids
 <!-- TOC -->
 - [Overview](#overview)
 - [Usage](#usage)
-- [Configuration](#configuration)
-  * [Configuration file format](#configuration-file-format)
-  * [Configuration file location](#configuration-file-location)
+- [Configuration File](#configuration-file)
+  * [Format](#format)
+  * [Location](#location)
 - [Autoban](#autoban)
 
 ## Overview
@@ -35,9 +35,9 @@ Usage: rcon [-config file] [-autoban | -autoban-test | -version | command]
 
 Latest release is available [here](https://github.com/dieselburner/rcon/releases/latest).
 
-## Configuration
+## Configuration File
 
-### Configuration file format
+### Format
 
 Configuration file is a JSON formatted file that contains server information and regex data for autoban feature.
 
@@ -81,7 +81,7 @@ Some technical information for autoban configuration:
 
 Default configuration file is [present in the source code](https://github.com/dieselburner/rcon/blob/master/.rconrc), and contains a predefined set of autoban regex rules.
 
-### Configuration file location
+### Location
 
 By default, `rcon` will use configuration file located at `~/.rconrc`.
 
