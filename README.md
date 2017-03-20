@@ -123,7 +123,7 @@ rcon -autoban-test
 
 This will only print matched users along with RCON commands that needs to be performed to ban/kick them, but actual ban/kick will not happen.
 
-### Cron job
+### Cron Job
 
 Use following reference on how to set up a cron job to periodically trigger autoban on your server:
 
