@@ -12,6 +12,9 @@ Source game server RCON command line utility on steroids
   * [Format](#format)
   * [Location](#location)
 - [Autoban](#autoban)
+  * [Description](#description)
+  * [Test](#test)
+  * [Cron Job](#cron-job)
 
 ## Overview
 
@@ -94,6 +97,8 @@ RCON_CONF=/test/.rconrc rcon status
 
 ## Autoban
 
+### Description
+
 Autoban feature is the primary reason why I developed this tool after I got fed up with advertisement in usernames on my server. Consider using this tool as a cron job if you hate these user names on your server as well:
 
 ```
@@ -108,6 +113,8 @@ Use following to ban/kick these users from your server:
 rcon -autoban
 ```
 
+### Test
+
 It is possible to test autoban feature without banning anyone, so that no innocent users are banned after configuration adjustment:
 
 ```
@@ -115,3 +122,19 @@ rcon -autoban-test
 ```
 
 This will only print matched users along with RCON commands that needs to be performed to ban/kick them, but actual ban/kick will not happen.
+
+### Cron job
+
+Use following reference on how to set up a cron job to periodically trigger autoban on your server:
+
+1. Start cron editor
+
+    ```
+    crontab -e
+    ```
+
+2. Add new cron job to trigger autoban every 5 minutes
+
+    ```
+    */5 * * * * /path/to/rcon -autoban 2>&1 >> /path/to/rcon-autoban.log
+    ```
