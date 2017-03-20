@@ -20,7 +20,7 @@ after_success:
   - gox -output "dist/{{.OS}}/{{.Arch}}/{{.Dir}}"
 
 before_deploy:
-  - find dist/ -type f | awk -F"/" '{print "cp " $0 " . && tar -czvf dist/rcon-" $2 "-" $3 ".tar.gz " $4}'
+  - find dist/ -type f | awk -F"/" '{print "cp " $0 " . && tar -czvf dist/rcon-" $2 "-" $3 ".tar.gz " $4}' | sh
 
 deploy:
     provider: releases
