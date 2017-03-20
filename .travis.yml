@@ -1,54 +1,30 @@
 language: go
 
 go:
-  - 1.x
+  - 1.6
+  - 1.7
+  - 1.8
+  - tip
 
 env:
-    matrix:
-      - GIMME_OS=darwin  GIMME_ARCH=386
-      - GIMME_OS=darwin  GIMME_ARCH=amd64
-      - GIMME_OS=darwin  GIMME_ARCH=arm
-      - GIMME_OS=darwin  GIMME_ARCH=arm64
-      - GIMME_OS=freebsd GIMME_ARCH=386
-      - GIMME_OS=freebsd GIMME_ARCH=amd64
-      - GIMME_OS=freebsd GIMME_ARCH=arm
-      - GIMME_OS=freebsd GIMME_ARCH=arm64
-      - GIMME_OS=linux   GIMME_ARCH=386
-      - GIMME_OS=linux   GIMME_ARCH=amd64
-      - GIMME_OS=linux   GIMME_ARCH=arm
-      - GIMME_OS=linux   GIMME_ARCH=arm64
-      - GIMME_OS=netbsd  GIMME_ARCH=386
-      - GIMME_OS=netbsd  GIMME_ARCH=amd64
-      - GIMME_OS=netbsd  GIMME_ARCH=arm
-      - GIMME_OS=netbsd  GIMME_ARCH=arm64
-      - GIMME_OS=openbsd GIMME_ARCH=386
-      - GIMME_OS=openbsd GIMME_ARCH=amd64
-      - GIMME_OS=openbsd GIMME_ARCH=arm
-      - GIMME_OS=openbsd GIMME_ARCH=arm64
-      - GIMME_OS=windows GIMME_ARCH=386
-      - GIMME_OS=windows GIMME_ARCH=amd64
-
-before_install:
-  - curl -o gimme -sL https://raw.githubusercontent.com/travis-ci/gimme/master/gimme
-  - chmod u+x gimme
-  - unset GOROOT GOTOOLDIR
-  - eval "$(./gimme $TRAVIS_GO_VERSION)"
-  - go version
-  - go env
+  - "PATH=/home/travis/gopath/bin:$PATH"
 
 install:
-  - go get -d -v ./...
+  - go get -t -v ./...
+  - go get github.com/mitchellh/gox
 
 script:
-  - go build -v ./...
+  - gox
 
-before_deploy:
-  - tar -czvf rcon-${GIMME_OS}-${GIMME_ARCH}.tar.gz rcon
+after_success:
+  - gox -output "dist/{{.OS}}_{{.Arch}}_{{.Dir}}"
 
 deploy:
     provider: releases
     api_key:
         secure: $GITHUB_TOKEN
     file_glob: true
-    file: rcon-${GIMME_OS}-${GIMME_ARCH}.tar.gz
+    file: dist/*
     skip_cleanup: true
+    on:
+        tags: true
