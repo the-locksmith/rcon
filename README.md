@@ -115,13 +115,13 @@ rcon -autoban
 
 ### Test
 
-It is possible to test autoban feature without banning anyone, so that no innocent users are banned after configuration adjustment:
+It is possible to test autoban feature without banning anyone, so that no innocent users are banned after incorrect configuration adjustment:
 
 ```
 rcon -autoban-test
 ```
 
-This will only print matched users along with RCON commands that needs to be performed to ban/kick them, but actual ban/kick will not happen.
+This will only print matched users, but actual ban/kick will not happen.
 
 ### Cron Job
 
