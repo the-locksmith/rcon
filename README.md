@@ -8,6 +8,7 @@ Source game server RCON command line utility on steroids
 <!-- TOC -->
 - [Overview](#overview)
 - [Usage](#usage)
+- [Downloads](#downloads)
 - [Configuration File](#configuration-file)
   * [Format](#format)
   * [Location](#location)
