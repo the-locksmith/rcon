@@ -133,7 +133,7 @@ Use following reference on how to set up a cron job to periodically trigger auto
     crontab -e
     ```
 
-2. Add new cron job to trigger autoban every 5 minutes
+2. Add new cron job to trigger autoban every 5 minutes:
 
     ```
     */5 * * * * /path/to/rcon -autoban 2>&1 >> /path/to/rcon-autoban.log
