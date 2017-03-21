@@ -127,7 +127,7 @@ This will only print matched users, but actual ban/kick will not happen.
 
 Use following reference on how to set up a cron job to periodically trigger autoban on your server:
 
-1. Start cron editor
+1. Start cron editor:
 
     ```
     crontab -e
