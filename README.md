@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/dieselburner/rcon.svg)](https://travis-ci.org/dieselburner/rcon)
 [![License](https://img.shields.io/github/license/dieselburner/rcon.svg)](https://github.com/dieselburner/rcon/blob/master/LICENSE.md)
 
-Source game server RCON command line utility on steroids
+RCON command line utility on steroids for Source engine based game servers
 
 <!-- TOC -->
 - [Overview](#overview)
@@ -19,7 +19,7 @@ Source game server RCON command line utility on steroids
 
 ## Overview
 
-`rcon` is a RCON command line interface tool for Source engine based game servers. Apart from obvious use for RCON commands it is capable of automatically banning users based on their user names.
+`rcon` is a RCON command line utility for Source engine based game servers. Apart from obvious use for RCON commands it is capable of automatically banning users based on their user names.
 
 ## Usage
 
