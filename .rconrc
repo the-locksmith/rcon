@@ -8,7 +8,7 @@
 	"banlist":
 	[
 		{
-			"regex"   : ".*?csgo(-happy|big|casino|dep|fade|labz|mix|rage|titan|tune|wd)",
+			"regex"   : ".*?csgo(-happy|big|casino|dep|fade|labz|mix|rage|team|titan|tune|wd|wolf)",
 			"period"  : 4320,
 			"message" : "advertisement = ban 72h"
 		},
