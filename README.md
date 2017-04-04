@@ -19,7 +19,7 @@ RCON command line utility on steroids for Source engine based game servers
 
 ## Overview
 
-`rcon` is a RCON command line utility for Source engine based game servers. Apart from obvious use for RCON commands it is capable of automatically banning users based on their user names.
+`rcon` is a RCON command line utility for Source engine based game server administration. Apart from obvious use of RCON commands it is capable of automatically banning users by their user names.
 
 ## Usage
 
