@@ -8,7 +8,7 @@
 	"banlist":
 	[
 		{
-			"regex"   : ".*?csgo(-happy|big|casino|dep|fade|labz|mix|rage|team|titan|tune|wd|wolf)",
+			"regex"   : ".*?csgo(500|-happy|bet|big|casino|dep|fade|handout|labz|loto|mix|rage|team|titan|tune|wd|wolf)",
 			"period"  : 4320,
 			"message" : "advertisement = ban 72h"
 		},
@@ -28,7 +28,7 @@
 			"message" : "advertisement = ban 72h"
 		},
 		{
-			"regex"   : ".*?(cases2x|kickback|magicdrop|pvpro)",
+			"regex"   : ".*?(cases2x|cases4fun|csgetto|kickback|magicdrop|pvpro)",
 			"period"  : 4320,
 			"message" : "advertisement = ban 72h"
 		},
