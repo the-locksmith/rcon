@@ -12,7 +12,7 @@ import (
 	"github.com/madcitygg/rcon"
 )
 
-const version = "1.0.3"
+const version = "1.0.4"
 
 func init() {
 	flag.Usage = usage
