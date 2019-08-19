@@ -8,7 +8,7 @@
 	"banlist":
 	[
 		{
-			"regex"   : ".*?csgo(500|-happy|bet|bich|big|bounty|casino|dep|fade|hand|labz|loto|mix|nt|rage|team|titan|tune|wd|wolf)",
+			"regex"   : ".*?csgo(500|-happy|atse|bet|bich|big|bounty|casino|dep|double|fade|hand|labz|loto|mix|necro|nt|rage|sell|team|titan|tune|wd|wolf)",
 			"period"  : 4320,
 			"message" : "advertisement = ban 72h"
 		},
@@ -23,17 +23,17 @@
 			"message" : "advertisement = ban 72h"
 		},
 		{
-			"regex"   : ".*?skin(up|games|win)",
+			"regex"   : ".*?skin(action|games|hub|sjar|up|win)",
 			"period"  : 4320,
 			"message" : "advertisement = ban 72h"
 		},
 		{
-			"regex"   : ".*?(bitskin|cases2x|cases4fun|csbet|csgetto|dota2house|gmod-best|kickback|magicdrop|pvpro)",
+			"regex"   : ".*?(bitskin|casejar|cases2x|cases4fun|chefcase|csbet|csfate|csgetto|dota2expert|dota2house|dotax2|farmskin|gift-drop|gmod-best|happy-random|hellcase|justcase|kickback|magicdrop|pvpro|raffletrade|tastydrop|windrop)",
 			"period"  : 4320,
 			"message" : "advertisement = ban 72h"
 		},
 		{
-			"regex"   : ".*?\\.(gg|money)",
+			"regex"   : ".*?\\.(farm|gg|money|trade)",
 			"period"  : 4320,
 			"message" : "advertisement = ban 72h"
 		},
